@@ -31,17 +31,20 @@ The system **discovers, validates, downloads, streams, organizes, and plays movi
 
 ## 🖥️ Screenshots
 
-### Dashboard
-![Dashboard](docs/screenshots/dashboard.png)
+### Mobile view Homepage 1
+![Dashboard](image_1.png)
 
-### Movie Grid
-![Movie Grid](docs/screenshots/movie-grid.png)
+### Mobile view Homepage 2
+![Movie Grid](image_2.png)
 
-### Hero Playback View
-![Hero Play](docs/screenshots/hero-play.png)
+### Mobile view Homepage 3
+![Hero Play](image_3.png)
 
-### Mobile Remote Control
-![Mobile Control](docs/screenshots/mobile-control.png)
+### Mobile view Homepage 4
+![Mobile Control](image_4.png)
+
+### Mobile view Homepage 5
+![Mobile Control](image_5.png)
 
 ---
 
