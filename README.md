@@ -35,7 +35,7 @@ The system **discovers, validates, downloads, streams, organizes, and plays movi
 ![Homepage 1](The-Movie-Hub/image_1.jpg)
 
 ### Mobile view Homepage 2
-![Homepage 2](docs/image_2.png)
+![Homepage 2](docs/image_2.jpg)
 
 ### Mobile view Homepage 3
 ![Homepage 3](docs/image_3.png)
