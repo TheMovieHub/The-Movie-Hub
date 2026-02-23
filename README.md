@@ -32,25 +32,25 @@ The system **discovers, validates, downloads, streams, organizes, and plays movi
 ## 🖥️ Screenshots
 
 ### Mobile view Homepage 1
-![Homepage 1](image_1.png)
+![Homepage 1](docs/image_1.png)
 
 ### Mobile view Homepage 2
-![Homepage 2](image_2.png)
+![Homepage 2](docs/image_2.png)
 
 ### Mobile view Homepage 3
-![Homepage 3](image_3.png)
+![Homepage 3](docs/image_3.png)
 
 ### Mobile view Homepage 4
-![Homepage 4](image_4.png)
+![Homepage 4](docs/image_4.png)
 
 ### Mobile view Homepage 5
-![Homepage 5](image_5.png)
+![Homepage 5](docs/image_5.png)
 
 ---
 
 ## 🧠 Architecture Overview
 
-![System Flow](Architecture-System-Flow.png)
+![System Flow](docs/Architecture-System-Flow.png)
 
 ### Core Components
 
