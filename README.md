@@ -50,7 +50,7 @@ The system **discovers, validates, downloads, streams, organizes, and plays movi
 
 ## 🧠 Architecture Overview
 
-![System Flow](docs/architecture/system-flow.png)
+![System Flow](Architecture-System-Flow.png)
 
 ### Core Components
 
