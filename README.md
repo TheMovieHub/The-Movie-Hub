@@ -1,118 +1,90 @@
 # 🎬 The Movie Hub
 
-**The Movie Hub** is a **super lightweight**, fully automated, headless home media system written in modern C++.
+**The Movie Hub** is a super lightweight, fully automated, headless home media system built in modern **C++23** for fast local movie discovery, downloading, streaming, playback, and library management.
 
-It is engineered for **power users**, long-running operation, and low-overhead 24/7 use. The stack is built around a fast local WebUI, a custom Smart Torrent engine, automated movie discovery, instant stream-ready playback, and a portable Home Control layer that keeps the whole system running from one self-hosted install.
+It is designed for power users who want a portable, low-overhead, self-hosted movie stack that can run 24/7 on Windows with a responsive WebUI, a custom Smart Torrent engine, signed software updates, Smart Player playback, TMDB metadata, Jackett search, referral sharing, and optional Full Unlock features.
 
-The system **discovers, validates, downloads, streams, organizes, monitors, and plays movies automatically**. Users can search, queue, stream, manage downloads, tune automation, update metadata, and control playback remotely through the Movie Hub WebUI from desktop, tablet, or mobile.
+Download the latest release here:
+
+[TheMovieHub/The-Movie-Hub](https://github.com/TheMovieHub/The-Movie-Hub/releases)
 
 ---
 
 ## ✨ Key Features
 
-- ⚡ **Ultra-lightweight C++ architecture** designed for low CPU and memory overhead
-- 🚀 Fully automated movie discovery, validation, acquisition, and library management
-- 🎬 **Instant streaming flow** for supported MKV movie downloads as soon as they become stream-ready
-- 🔍 Torrent aggregation through Jackett
-- 🧲 **Custom Smart Torrent engine** with active slot management, queueing, slow-torrent replacement, and streaming-aware downloads
-- ⚙️ **High-throughput ingestion**
-  - ~**2 torrents per second**
-  - ~**7,200 torrents per hour**
-  - Stress-tested under sustained load
-- 🎥 **Smart Player** built on **libmpv** with hardware-aware playback tuning
-- 🧠 Advanced duplicate detection using CSV inventory, hash tracking, and fuzzy title matching
-- 🛡️ Multi-layer content filtering, metadata matching, and validation
-- 💾 Smart storage guard with hard limits
+- ⚡ Ultra-lightweight C++23 architecture built for low CPU and memory use
+- 🎬 Automated movie discovery, validation, download, streaming, organization, and playback
+- 🧲 Custom Smart Torrent engine with queueing, active slots, slow-torrent replacement, and stream-aware downloads
+- 🚀 High-throughput torrent ingestion, tested around ~2 torrents per second / ~7,200 per hour
+- 🎥 Smart Player powered by libmpv with hardware-aware playback tuning
+- 🔍 Jackett-powered torrent aggregation
+- 🧠 TMDB metadata matching for posters, backdrops, genres, cast, discovery, and title validation
+- 🛡️ Multi-layer filtering for title, year, genre, language, file type, banned words, duplicates, and storage limits
+- 💾 Smart storage guard with separate library, download, and streaming folders
 - 📱 Responsive WebUI for desktop, tablet, and mobile
-- 🌐 Local Netflix-style movie browsing, discovery, downloads, settings, sharing, and upgrade pages
-- 🔑 Customer TMDB API key setup inside Settings with clear setup instructions
-- 🔄 Signed software update flow with package verification
-- 🧩 Modular system design with separate Home Control, Automation, Smart Torrent, Smart Player, and WebUI layers
+- 🔑 Customer TMDB API key setup inside Settings
+- 🔄 Signed software update system with package hash and signature verification
+- 🧩 Modular design across Home Control, Automation, Smart Torrent, Smart Player, and WebUI
+- 🔐 Privacy-conscious telemetry relay through local Home Control, with aggregate dashboard reporting only
+- 🎁 Referral sharing with discount and commission support
+- 💳 Optional Full Unlock flow with MetaMask / Base mainnet support
 
 ---
 
-## 🖥️ Screenshots
+## 🖥️ Screenshot Highlights
 
-### Home Page 1
-![Home Page 1](index_page_1.png)
+The main README keeps a focused set of screenshots so the GitHub page loads quickly. Additional screenshots can live in the release assets or a separate gallery.
 
-### Home Page 2
-![Home Page 2](index_page_2.png)
+### Home
+![Home Page](index_page_1.png)
 
-### Home Footer
-![Home Footer](index_page_footer.png)
+### Library
+![Library Page](library_page_1.png)
 
-### Library Page 1
-![Library Page 1](library_page_1.png)
+### Discovery
+![Discovery Page](discover_page_1.png)
 
-### Library Page 2
-![Library Page 2](library_page_2.png)
-
-### Discovery Page 1
-![Discovery Page 1](discover_page_1.png)
-
-### Discovery Page 2
-![Discovery Page 2](discovery_page_2.png)
-
-### Discovery Page 3
-![Discovery Page 3](discovery_page_3.png)
-
-### Downloads Page
+### Downloads
 ![Downloads Page](downloads_page_1.png)
 
-### On Demand Page
+### On Demand
 ![On Demand Page](ondemand_page.png)
 
-### Automation Page 1
-![Automation Page 1](automation_page_1.png)
+### Automation
+![Automation Page](automation_page_1.png)
 
-### Automation Page 2
-![Automation Page 2](automation_page_2.png)
-
-### Movie Detail Page 1
-![Movie Detail Page 1](movie_detail_page_1.png)
-
-### Movie Detail Page 2
-![Movie Detail Page 2](movie_detail_page_2.png)
-
-### Movie Detail Page 3
-![Movie Detail Page 3](movie_details_page_3.png)
-
-### Remote Page 1
-![Remote Page 1](remote_page_1.png)
-
-### Remote Page 2
-![Remote Page 2](remote_page_2.png)
-
-### Settings Page
+### Settings
 ![Settings Page](settings_page_1.png)
 
-### Share Page
+### Share
 ![Share Page](share_page_1.png)
 
-### Unlock Page
+### Unlock
 ![Unlock Page](unlock_page.png)
 
 ---
 
 ## 🧠 Architecture Overview
 
-### Core Components
+The Movie Hub is split into focused native components:
 
 - **Home Control Server**  
-  Local orchestration, hardware detection, WebUI API layer, runtime configuration, TMDB key storage, signed update handling, playback handoff, and system coordination.
+  Local orchestration layer for WebUI APIs, runtime settings, TMDB and Jackett config, Smart Torrent control, Smart Player handoff, signed updates, hardware identity, privacy relay, and unlock state.
 
 - **Full Automation Engine**  
-  Discovery, filtering, scheduling, validation, queue handling, and automated movie acquisition.
+  Handles discovery rules, scheduling, filtering, validation, queue handling, and automated movie acquisition.
 
 - **Smart Torrent Engine**  
-  High-volume torrent ingestion, active slot control, slow torrent detection, stream-mode handling, metadata checks, and download lifecycle management.
+  Custom torrent engine for high-volume ingestion, active slot management, queue control, stream-mode downloads, slow-torrent replacement, and download lifecycle monitoring.
 
-- **Smart Player (libmpv)**  
-  Local and streaming playback with hardware-aware tuning, resume support, smart defaults, and configurable playback profiles.
+- **Smart Player**  
+  libmpv-based local player with hardware-aware defaults, playback profiles, resume support, and streaming-ready playback.
 
 - **WebUI Frontend**  
-  Lightweight remote interface for Home, Library, Discovery, Downloads, On Demand, Automation, Settings, Upgrade, Share, and movie detail pages.
+  Lightweight local interface for Home, Library, Discovery, Downloads, On Demand, Automation, Settings, Share, Upgrade, Remote, and movie detail pages.
+
+- **Signed Update Layer**  
+  Verifies update packages using package hashes, detached signatures, release metadata, and staged preflight checks before applying updates.
 
 ---
 
@@ -122,139 +94,243 @@ The system **discovers, validates, downloads, streams, organizes, monitors, and 
 - **HTTP:** cpp-httplib, libcurl, WinHTTP
 - **Torrent Engine:** Custom Smart Torrent
 - **Indexer:** Jackett
-- **Media Playback:** Smart Player built on libmpv
+- **Playback:** libmpv Smart Player
 - **Metadata:** TMDB
-- **Parsing:** nlohmann/json
-- **Matching:** rapidfuzz and custom title normalization
-- **Filesystem:** std::filesystem with portable path handling
-- **Frontend:** HTML / CSS / JavaScript
-- **Platform:** Windows portable local install
+- **JSON:** nlohmann/json
+- **Matching:** rapidfuzz plus custom title normalization
+- **Filesystem:** std::filesystem
+- **Frontend:** HTML, CSS, JavaScript
+- **Payments:** MetaMask / EVM wallet flow on Base mainnet
+- **Updates:** Signed ZIP package verification
+- **Platform:** Portable Windows local install
 
 ---
 
-## ⚙️ How It Works
+## ⚙️ First Run Setup
 
-1. The system starts and **loads local configuration, credentials, storage paths, and access mode**.
-2. Home Control starts the local WebUI API and coordinates Smart Torrent, Jackett, Smart Player, software updates, and runtime settings.
-3. Users configure automation and quality rules:
-   - Date ranges
-   - Genres
-   - Ratings and vote thresholds
-   - Resolution preferences
-   - File size and format rules
-   - Language and subtitle rules
-   - Storage guard limits
-   - Download queue and slow-torrent replacement settings
-4. The automation engine queries Jackett for candidates.
-5. Torrents are validated before download:
-   - TMDB metadata matching
-   - Title and filename verification
-   - Year and release-date checks
-   - Genre and language filtering
-   - Banned word filtering
-   - Inappropriate content prevention
-6. Smart Torrent ingests valid torrents, manages active download slots, and queues or replaces slow transfers when needed.
-7. The WebUI shows download state, library state, streaming readiness, discovery results, and detailed movie pages.
-8. Stream-ready MKV downloads can be played through Smart Player before the full download finishes.
-9. Fully downloaded movies are organized into the local library and protected by duplicate detection.
-10. Smart Player selects playback behavior based on detected hardware and saved playback settings.
+1. Download the latest release from:
+
+   [TheMovieHub/The-Movie-Hub](https://github.com/TheMovieHub/The-Movie-Hub/releases)
+
+2. Extract the ZIP to a normal writable folder, for example:
+
+   `C:\The Movie Hub`
+
+3. Start **Movie Hub Home Control**.
+
+4. Open the local WebUI in your browser.
+
+5. Go to **Settings → General → TMDB Metadata Key**.
+
+6. Create a free TMDB account and generate an **API Key (v3 auth)**.
+
+7. Paste the TMDB API key into Settings and save it.
+
+8. Configure your movie library, download, and streaming folders.
+
+9. Configure Jackett if you want torrent aggregation through your own Jackett setup.
+
+10. Open **Settings → Smart Torrent** and confirm active slots, queue behavior, speed limits, and storage guard settings.
+
+11. Open **Settings → Smart Player** and confirm playback profile, hardware acceleration, and subtitle/audio preferences.
+
+12. Use **Discovery**, **On Demand**, or **Automation** to search, queue, download, stream, and manage movies.
+
+13. Optional: open **Upgrade** to unlock premium features.
+
+14. Optional: open **Share** to copy your referral template and share The Movie Hub with others.
 
 ---
 
 ## 🔑 TMDB Metadata Setup
 
-The Movie Hub uses **TMDB** for Discovery, posters, backdrops, genres, cast details, movie matching, and cleaner library metadata.
+The Movie Hub uses **TMDB** for posters, backdrops, genres, cast details, discovery, title matching, and cleaner library metadata.
 
 Customers can add their own free TMDB key inside:
 
 **Settings → General → TMDB Metadata Key**
 
-The Settings page includes:
+Use the TMDB **API Key (v3 auth)**.
 
-- Current TMDB key status
-- Password-protected key entry
-- Show/hide key control
-- Save key button
-- A direct link to the TMDB API setup page
-- Step-by-step setup guidance
-
-Users should paste the **API Key (v3 auth)** from TMDB. The longer **API Read Access Token** is not the key used by this app.
+Do not use the longer TMDB API Read Access Token.
 
 The saved key is stored locally in:
 
 `The Movie Hub/config/credentials.conf`
 
-The WebUI only displays a masked version after saving and does not print the full key back to the browser.
+The WebUI only shows a masked version after saving and does not print the full key back to the browser.
 
 ---
 
-## 🛡️ Advanced Filtering & Safety
+## 🧲 Smart Torrent
 
-The Movie Hub applies **multi-layer validation** to improve accuracy and reduce unwanted matches:
+The custom Smart Torrent engine is built for continuous local automation:
 
-- TMDB title, year, poster, backdrop, and metadata matching
+- Active slot management
+- Queue prioritization
+- Slow torrent replacement
+- Stream-ready MKV detection
+- Download lifecycle monitoring
+- Software update seeding support
+- Large candidate ingestion
+- Streaming-aware download handling
+- Local-first status reporting through the WebUI
+
+---
+
+## 🎥 Smart Player
+
+Smart Player is built around **libmpv** and supports:
+
+- Local movie playback
+- Stream-ready playback while supported downloads are still in progress
+- Hardware-aware playback defaults
+- Resume support
+- Playback profiles
+- Subtitle and audio handling
+- Remote playback control from the WebUI
+
+---
+
+## 🔄 Signed Software Updates
+
+The Movie Hub includes a signed update flow designed for portable installs.
+
+Update packages are verified before use with:
+
+- Package SHA-256
+- Detached signature
+- Public key metadata
+- Manifest checks
+- Staging checks
+- Apply preflight checks
+
+The app verifies update integrity before preparing or applying an update.
+
+---
+
+## 🎁 Share & Referral System
+
+The Share page gives customers a referral hash and ready-to-copy templates for email, text, and manual sharing.
+
+Shared messages direct new users to:
+
+[TheMovieHub/The-Movie-Hub](https://github.com/TheMovieHub/The-Movie-Hub/releases)
+
+Referral attribution is designed to work across copied installs without copying generated runtime privacy data.
+
+---
+
+## 🔐 Privacy-Aware Reporting
+
+The Movie Hub uses local Home Control for small aggregate status payloads.
+
+The WebUI does not expose private dashboard endpoints, private relay credentials, hidden-service keys, or generated runtime Tor data.
+
+Dashboard reporting is designed around aggregate app statistics such as installs, tier status, heartbeats, country-level counts, and update availability.
+
+---
+
+## 💳 Free Core & Full Unlock
+
+The Movie Hub includes a free tier and optional Full Unlock flow.
+
+The Upgrade page supports:
+
+- Free Core status
+- Full Unlock information
+- Referral hash entry
+- MetaMask wallet connection
+- Base mainnet checkout flow
+- Local unlock verification
+- Premium feature access after successful unlock
+
+Unlock state is handled through Home Control and should not depend on customer-editable frontend-only files.
+
+---
+
+## 🛡️ Filtering & Safety
+
+The Movie Hub applies multiple validation layers before downloading:
+
+- TMDB title and year matching
+- Poster and backdrop metadata
 - Genre enforcement
-- Date-range enforcement
-- Language and subtitle preference handling
+- Date range rules
+- Language and subtitle preferences
 - Banned word filtering
+- File type validation
 - Title-to-file verification
-- Duplicate prevention through CSV and hash tracking
-- Inappropriate content prevention
-- Storage-limit enforcement before download
+- Duplicate prevention
+- CSV inventory checks
+- Hash tracking
+- Storage guard enforcement
 - Queue handling for unavailable or slow downloads
 
 ---
 
 ## 💾 Smart Storage Management
 
+The Movie Hub supports:
+
 - User-defined movie library folder
-- Separate temporary download folder
-- Separate streaming folder for stream-mode downloads
-- Hard storage guard limits
-- Automatic cleanup and library refresh controls
-- Designed to prevent disk exhaustion during long-running automation
+- Temporary download folder
+- Streaming folder
+- Storage guard limits
+- Cleanup controls
+- Library refresh tools
+- Duplicate protection
+- Long-running automation without uncontrolled disk growth
 
 ---
 
 ## 📺 WebUI Pages
 
 - **Home**  
-  Landing dashboard, playback feature overview, latest arrivals, and key status sections.
+  Local dashboard, feature overview, latest arrivals, and system status.
 
 - **Library**  
-  Local movie library with search, quick views, genre filters, sorting, pagination, and premium management controls.
+  Local movie library with search, filters, sorting, pagination, quick views, and management tools.
 
 - **Discovery**  
-  TMDB-powered movie discovery with filters, detail views, and download actions.
+  TMDB-powered discovery with filters, detail views, and download actions.
 
 - **Downloads**  
-  Smart Torrent status, active download slots, queue state, progress, speeds, and torrent controls.
+  Smart Torrent status, active slots, queue state, progress, speed, and torrent controls.
 
 - **On Demand**  
-  Search and request a movie directly through the WebUI.
+  Search and request a movie directly.
 
 - **Automation**  
   Automation status, rules, scheduling, and premium automation controls.
 
 - **Settings**  
-  Runtime paths, TMDB key setup, Smart Torrent settings, Smart Player tuning, quality scoring, download rules, streaming rules, privacy, software updates, and reset tools.
-
-- **Upgrade**  
-  Free Core and Full Unlock information, local unlock state, and premium feature overview.
+  Runtime paths, TMDB key, Jackett config, Smart Torrent, Smart Player, quality scoring, privacy, updates, and reset tools.
 
 - **Share**  
-  Referral hash, share actions, and referral status tools.
+  Referral hash, share templates, copied install support, and referral status tools.
+
+- **Upgrade**  
+  Free Core and Full Unlock flow with wallet checkout support.
+
+- **Remote**  
+  Playback and control interface for local Smart Player sessions.
 
 ---
 
-## ⚡ Performance & Efficiency
+## ⚡ Performance
 
-- Built for continuous local operation
-- Extremely low CPU and memory overhead
-- Designed to stay responsive while automation and downloads are active
-- Smart Torrent can ingest large candidate sets quickly
-- WebUI remains lightweight and local-first
-- Smart Player uses hardware-aware settings for smoother playback
+The Movie Hub is built for:
+
+- 24/7 local operation
+- Low CPU usage
+- Low memory overhead
+- Fast WebUI response
+- Large torrent candidate ingestion
+- Stream-ready playback
+- Long-running automation
+- Portable Windows installs
+- Mini-PC and home-server style deployments
 
 ---
 
@@ -264,32 +340,66 @@ The Movie Hub applies **multi-layer validation** to improve accuracy and reduce 
 
 Current focus areas:
 
-- Mobile and tablet WebUI polish
-- Release candidate hardening
-- Smart Torrent slot and queue behavior
-- Discovery and metadata reliability
-- Settings clarity for customer setup
-- Signed update flow
-- Packaged portable release workflow
+- Release hardening
+- Customer setup clarity
+- Smart Torrent reliability
+- Signed update reliability
+- Referral and share flow
+- WebUI polish across desktop, tablet, and mobile
+- Smart Player tuning
+- Automation and metadata accuracy
 
 Planned enhancements:
 
-- More guided first-run setup
-- Stronger customer onboarding
+- More guided first-run onboarding
+- Stronger customer diagnostics
 - Optional secure remote access outside LAN
 - Multi-device playback targets
-- Packaged deployment for mini-PC / appliance use
+- Packaged appliance-style deployment
+
+---
+
+## 📦 Third-Party Notices
+
+The Movie Hub includes and interoperates with third-party software and services. The Movie Hub project code is licensed under MIT, but bundled third-party components remain under their own licenses.
+
+Bundled or integrated components include:
+
+- **Jackett** - GPL-2.0  
+  Used for torrent indexer aggregation.  
+  Source: https://github.com/Jackett/Jackett
+
+- **mpv / libmpv** - GPLv2-or-later / LGPL depending on build  
+  Used by Smart Player for playback. The currently bundled `libmpv-2.dll` identifies itself as GPLv2-or-later.  
+  Source: https://github.com/mpv-player/mpv
+
+- **Tor** - 3-clause BSD and bundled third-party notices  
+  Used as a bundled privacy transport for private telemetry relay communication.  
+  Source: https://gitlab.com/torproject/tor
+
+- **TMDB** - API terms and attribution required  
+  Used for posters, backdrops, genres, discovery, title matching, and metadata.  
+  This product uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB.  
+  Terms: https://www.themoviedb.org/api-terms-of-use  
+  Attribution: https://www.themoviedb.org/about/logos-attribution
+
+- **Other native dependencies**  
+  Includes components such as Boost, libtorrent, OpenSSL, cpp-httplib, curl, nlohmann/json, rapidfuzz-cpp, and zlib.
+
+The customer release bundle includes `THIRD_PARTY_NOTICES.md`, `SOURCE_CODE_OFFER.md`, and a `licenses/` directory with copied third-party license and copyright files.
 
 ---
 
 ## ⚠️ Legal Notice
 
-This project is intended for **personal media management and educational use only**.
+This project is intended for personal media management, automation research, and educational use only.
 
-Users are responsible for complying with all applicable local laws, regulations, copyright rules, and content-access restrictions in their region.
+Users are responsible for complying with all applicable local laws, copyright rules, content-access restrictions, and terms of service in their region.
 
 ---
 
 ## 📜 License
 
-MIT License
+The Movie Hub project code is licensed under the MIT License.
+
+Bundled third-party components remain under their own licenses. See `THIRD_PARTY_NOTICES.md`, `SOURCE_CODE_OFFER.md`, and the `licenses/` directory in the release bundle.
