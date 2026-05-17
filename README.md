@@ -118,7 +118,12 @@ The Movie Hub is split into focused native components:
 
 3. Start **Movie Hub Home Control**.
 
-4. Open the local WebUI in your browser.
+4. Open the WebUI in your browser:
+
+   - On the same PC: `http://127.0.0.1:8060`
+   - From another device on your home network: `http://YOUR_IP_ADDRESS:8060`
+
+   Replace `YOUR_IP_ADDRESS` with the local IP address of the Windows PC running The Movie Hub, for example `http://192.168.1.50:8060`.
 
 5. Go to **Settings → General → TMDB Metadata Key**.
 
